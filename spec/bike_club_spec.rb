@@ -41,16 +41,16 @@ RSpec.describe Biker do
       expect(@club.bikers).to eq([])
     end
   end
-end
 
-#   describe '#learn_terrain' do
-#     it 'adds terrains to acceptable_terrians array' do
-#       expect(@biker.acceptable_terrain).to eq([])
-#       @biker.learn_terrain(:gravel)
-#       @biker.learn_terrain(:hills)
-#       expect(@biker.acceptable_terrain).to eq([:gravel, :hills])
-#     end
-#   end
+  describe '#add_biker' do
+    it 'adds terrains to acceptable_terrians array' do
+      expect(@club.bikers).to eq([])
+      @club.add_biker(@biker)
+      @club.add_biker(@biker2)
+      expect(@club.bikers).to eq([@biker, @bicker2])
+    end
+  end
+end
 
 #   describe '#log_ride' do
 #     it 'returns a hash with rides taken as the key and the value as an array of times for each ride' do
