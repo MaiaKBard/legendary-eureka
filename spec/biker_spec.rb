@@ -84,24 +84,27 @@ RSpec.describe Biker do
     end
   end
 
-  # describe '#personal_record' do
-  #   it 'returns the best time for each ride taken by the biker' do
-  #     expect(@biker.rides).to eq({})
-  #     @biker.log_ride(@ride1, 92.5)
-  #     @biker.log_ride(@ride1, 91.1)
-  #     @biker.log_ride(@ride2, 60.9)
-  #     @biker.log_ride(@ride2, 61.6)
-  #     expected_output = {
-  #       @ride1 => [92.5, 91.1],
-  #       @ride2 => [60.9, 61.6]
-  #     }
-  #     expect(@biker.rides).to eq(expected_output)
-  #     expect(@biker.personal_record(@ride1)).to eq(91.1)
-  #     expect(@biker.personal_record(@ride2)).to eq(60.9)  
-  #   end
+  describe '#personal_record' do
+    before(:each) do
+      @biker.log_ride(@ride1, 92.5)
+      @biker.log_ride(@ride1, 91.1)
+      @biker.log_ride(@ride2, 60.9)
+      @biker.log_ride(@ride2, 61.6)
 
-   
+      @biker2.learn_terrain(:gravel)
+      @biker2.learn_terrain(:hills)
+      @biker2.log_ride(@ride1, 95.0)
+      @biker2.log_ride(@ride2, 65.0)
+    end
 
-   
-  # end
+    it 'returns the best time(lowest time) for each ride taken by the biker' do
+      expect(@biker.personal_record(@ride1)).to eq(91.1)
+      expect(@biker.personal_record(@ride2)).to eq(60.9)  
+      expect(@biker2.personal_record(@ride2)).to eq(65.0)
+    end
+
+    it 'returns false if no rides were logged for the given ride' do
+      expect(@biker2.personal_record(@ride1)).to eq(false)
+    end
+  end
 end 
