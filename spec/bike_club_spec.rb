@@ -63,13 +63,24 @@ RSpec.describe Biker do
   end
 
   describe '#best_time' do
-    it 'returns the biker with the the best(lowest time) each ride given ' do
+    it 'returns the biker with the the best(lowest time) each ride given' do
       expect(@club.bikers).to eq([])
       @club.add_biker(@biker)
       @club.add_biker(@biker2)
       expect(@club.bikers).to eq([@biker, @biker2])
       expect(@club.best_time(@ride1)).to eq(@biker)
       expect(@club.best_time(@ride2)).to eq(@biker)
+    end
+  end
+
+  describe '#bikers_eligible' do
+    it 'returns the bikers eligible for a ride given' do
+      expect(@club.bikers).to eq([])
+      @club.add_biker(@biker)
+      @club.add_biker(@biker2)
+      expect(@club.bikers).to eq([@biker, @biker2])
+      expect(@club.bikers_eligible(@ride1)).to eq([@biker, @biker2])
+      expect(@club.bikers_eligible(@ride2)).to eq([@biker])
     end
   end
 end
