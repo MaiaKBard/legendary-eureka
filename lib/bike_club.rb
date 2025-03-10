@@ -10,4 +10,9 @@ class BikeClub
     @bikers << biker
   end
 
+  def most_rides
+    @bikers.max_by do |biker|
+      biker.rides.values.size
+    end
+  end
 end
