@@ -23,7 +23,6 @@ class BikeClub
   end
 
   def bikers_eligible(ride)
-    # binding.pry
     @bikers.select do |biker|
       biker.acceptable_terrain.include?(ride.terrain) && 
       ride.total_distance <= biker.max_distance
