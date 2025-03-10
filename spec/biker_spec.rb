@@ -14,7 +14,7 @@ RSpec.describe Biker do
   end
   describe 'initialize' do
     it 'exsists' do
-      expect(@biker1).to be_a(Biker)
+      expect(@biker).to be_a(Biker)
       expect(@biker2).to be_a(Biker)
     end
   end
@@ -36,17 +36,16 @@ RSpec.describe Biker do
       expect(@biker.acceptable_terrain).to eq([])
     end
   end
+
+  describe '#learn_terrain' do
+    it 'adds terrains to acceptable_terrians array' do
+      expect(@biker.acceptable_terrain).to eq([])
+      @biker.learn_terrain(:gravel)
+      @biker.learn_terrain(:hills)
+      expect(@biker.acceptable_terrain).to eq([:gravel, :hills])
+    end
+  end
 end
-
-#   describe '#loop?' do
-#     it 'returns false if the ride is not a loop' do
-#       expect(@ride1.loop?).to eq(false)
-#     end
-
-#     it 'returns true if the ride is a loop' do
-#       expect(@ride2.loop?).to eq(true)
-#     end
-#   end
 
 #   describe '#total_distance' do
 #     it 'calculates double the distance if it is not a loop' do
