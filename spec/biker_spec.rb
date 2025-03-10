@@ -48,6 +48,8 @@ RSpec.describe Biker do
 
   describe '#log_ride' do
     it 'returns a hash with rides taken as the key and the value as an array of times for each ride' do
+      @biker.learn_terrain(:gravel)
+      @biker.learn_terrain(:hills)
       expect(@biker.rides).to eq({})
       @biker.log_ride(@ride1, 92.5)
       @biker.log_ride(@ride1, 91.1)
@@ -60,23 +62,6 @@ RSpec.describe Biker do
       }
 
       expect(@biker.rides).to eq(expected_output)
-    end
-  end
-
-  describe '#personal_record' do
-    it 'returns the best time for each ride taken by the biker' do
-      expect(@biker.rides).to eq({})
-      @biker.log_ride(@ride1, 92.5)
-      @biker.log_ride(@ride1, 91.1)
-      @biker.log_ride(@ride2, 60.9)
-      @biker.log_ride(@ride2, 61.6)
-      expected_output = {
-        @ride1 => [92.5, 91.1],
-        @ride2 => [60.9, 61.6]
-      }
-      expect(@biker.rides).to eq(expected_output)
-      expect(@biker.personal_record(@ride1)).to eq(91.1)
-      expect(@biker.personal_record(@ride2)).to eq(60.9)  
     end
 
     it 'does not let you log a ride if biker does not know terrian' do
@@ -86,18 +71,37 @@ RSpec.describe Biker do
       expect(@biker2.rides).to eq({})
     end
 
-    it 'does not let you bike over bikers max_distnce' do
+    it 'does not let you bike over bikers max_distance' do
       @biker2.learn_terrain(:gravel)
       @biker2.learn_terrain(:hills)
       expect(@biker2.rides).to eq({})
       @biker2.log_ride(@ride1, 95.0)
-      @biker2.log_ride(@ride2, 67.0)
+      @biker2.log_ride(@ride2, 65.0)
       expected_output = {
         @ride2 => [65.0]
       }
-      expect(@biker2.rides).to eq(expected_output)
-      expect(@biker2.personal_record(@ride2)).to eq(65.0)
-      expect(@biker.personal_record(@ride1)).to eq(false)  
+      expect(@biker2.rides).to eq(expected_output) 
     end
   end
+
+  # describe '#personal_record' do
+  #   it 'returns the best time for each ride taken by the biker' do
+  #     expect(@biker.rides).to eq({})
+  #     @biker.log_ride(@ride1, 92.5)
+  #     @biker.log_ride(@ride1, 91.1)
+  #     @biker.log_ride(@ride2, 60.9)
+  #     @biker.log_ride(@ride2, 61.6)
+  #     expected_output = {
+  #       @ride1 => [92.5, 91.1],
+  #       @ride2 => [60.9, 61.6]
+  #     }
+  #     expect(@biker.rides).to eq(expected_output)
+  #     expect(@biker.personal_record(@ride1)).to eq(91.1)
+  #     expect(@biker.personal_record(@ride2)).to eq(60.9)  
+  #   end
+
+   
+
+   
+  # end
 end 

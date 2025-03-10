@@ -9,14 +9,21 @@ class Biker
   end
 
   def learn_terrain(terrain)
-    @acceptable_terrain << terrain
+    @acceptable_terrain << terrain 
   end
 
   def log_ride(ride, time)
+    return unless @acceptable_terrain.include?(ride.terrain) && ride.total_distance <= @max_distance
+
     if @rides[ride]
       @rides[ride] << time
     else 
       @rides[ride] = [time]
     end
   end
+
+  # def personal_record(ride)
+  #   return false @ride[ride]
+
+  # end
 end
