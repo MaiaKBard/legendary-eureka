@@ -43,11 +43,17 @@ RSpec.describe Biker do
   end
 
   describe '#add_biker' do
-    it 'adds terrains to acceptable_terrians array' do
+    it 'adds biker biker into the bikers array' do
       expect(@club.bikers).to eq([])
       @club.add_biker(@biker)
       @club.add_biker(@biker2)
-      expect(@club.bikers).to eq([@biker, @bicker2])
+      expect(@club.bikers).to eq([@biker, @biker2])
+    end
+  end
+
+  describe '#most_rides' do
+    it 'returns the biker with the most rides logged' do
+      expect(@club.most_rides).to eq(@biker)
     end
   end
 end

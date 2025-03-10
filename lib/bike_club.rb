@@ -6,4 +6,8 @@ class BikeClub
     @bikers = []
   end
 
+  def add_biker(biker)
+    @bikers << biker
+  end
+
 end
