@@ -86,6 +86,8 @@ RSpec.describe Biker do
 
   describe '#personal_record' do
     before(:each) do
+      @biker.learn_terrain(:gravel)
+      @biker.learn_terrain(:hills)
       @biker.log_ride(@ride1, 92.5)
       @biker.log_ride(@ride1, 91.1)
       @biker.log_ride(@ride2, 60.9)
