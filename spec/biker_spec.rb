@@ -46,7 +46,7 @@ RSpec.describe Biker do
     end
   end
 
-  describe '#log_rides' do
+  describe '#log_ride' do
     it 'returns a hash with rides taken as the key and the value as an array of times for each ride' do
       expect(@biker.rides).to eq({})
       @biker.log_ride(@ride1, 92.5)
