@@ -15,4 +15,10 @@ class BikeClub
       biker.rides.values.size
     end
   end
+
+  def best_time(ride)
+    @bikers.min_by do |biker|
+      biker.rides.values.min 
+    end
+  end
 end
