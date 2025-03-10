@@ -45,15 +45,21 @@ RSpec.describe Biker do
       expect(@biker.acceptable_terrain).to eq([:gravel, :hills])
     end
   end
-end
 
-#   describe '#total_distance' do
-#     it 'calculates double the distance if it is not a loop' do
-#       expect(@ride1.total_distance).to eq(21.4)
-#     end
+  describe '#log_rides' do
+    it 'returns a hash with rides taken as the key and the value as an array of times for each ride' do
+      expect(@biker.rides).to eq({})
+      @biker.log_ride(@ride1, 92.5)
+      @biker.log_ride(@ride1, 91.1)
+      @biker.log_ride(@ride2, 60.9)
+      @biker.log_ride(@ride2, 61.6)
 
-#     it 'returns the distance if it is a loop' do
-#       expect(@ride2.total_distance).to eq(14.9)
-#     end
-#   end
-# end 
+      expected_output = {
+        @ride1 => [92.5, 91.1],
+        @ride2 => [60.9, 61.6]
+      }
+
+      expect(@biker.rides).to eq(expected_output)
+    end
+  end
+end 
