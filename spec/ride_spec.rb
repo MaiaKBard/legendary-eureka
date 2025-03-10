@@ -39,4 +39,14 @@ RSpec.describe Ride do
       expect(@ride2.loop?).to eq(true)
     end
   end
+
+  describe '#total_distance' do
+    it 'calculates double the distance if it is not a loop' do
+      expect(@ride1.total_distance).to eq(21.4)
+    end
+
+    it 'returns the distance if it is a loop' do
+      expect(@ride2.total_distance).to eq(14.9)
+    end
+  end
 end 
