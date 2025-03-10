@@ -79,8 +79,8 @@ RSpec.describe Biker do
       @club.add_biker(@biker)
       @club.add_biker(@biker2)
       expect(@club.bikers).to eq([@biker, @biker2])
-      expect(@club.bikers_eligible(@ride1)).to eq([@biker, @biker2])
-      expect(@club.bikers_eligible(@ride2)).to eq([@biker])
+      expect(@club.bikers_eligible(@ride1)).to eq([@biker])
+      expect(@club.bikers_eligible(@ride2)).to eq([@biker, @biker2])
     end
   end
 end
