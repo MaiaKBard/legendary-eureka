@@ -14,11 +14,11 @@ RSpec.describe Biker do
     @ride1 = Ride.new({name: "Walnut Creek Trail", distance: 10.7, loop: false, terrain: :hills})
     @ride2 = Ride.new({name: "Town Lake", distance: 14.9, loop: true, terrain: :gravel})
 
-    @biker1.learn_terrain(:hills)
-    @biker1.learn_terrain(:gravel)
-    @biker1.log_ride(@ride1, 92.5)
-    @biker1.log_ride(@ride1, 91.1)
-    @biker1.log_ride(@ride2, 60.9)
+    @biker.learn_terrain(:hills)
+    @biker.learn_terrain(:gravel)
+    @biker.log_ride(@ride1, 92.5)
+    @biker.log_ride(@ride1, 91.1)
+    @biker.log_ride(@ride2, 60.9)
 
     @biker2.learn_terrain(:hills)
     @biker2.learn_terrain(:gravel)
